@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Service Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .auth-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .auth-branding {
+            flex: 1;
+            background-color: var(--primary-900);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Abstract decoration */
+        .auth-branding::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 50%;
+            height: 50%;
+            background: radial-gradient(circle, rgba(16,185,129,0.2) 0%, rgba(15,23,42,0) 70%);
+            border-radius: 50%;
+        }
+
+        .auth-branding-content {
+            text-align: center;
+            z-index: 10;
+            padding: var(--space-8);
+        }
+
+        .auth-form-wrapper {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--white);
+            padding: var(--space-4);
+        }
+
+        .auth-card {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-900);
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--space-8);
+        }
+
+        .logo span {
+            color: var(--accent-500);
+        }
+        
+        .logo-branding span {
+             color: var(--accent-500);
+        }
+
+        @media (max-width: 768px) {
+            .auth-branding {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <!-- Left Side: Branding -->
+        <div class="auth-branding">
+            <div class="auth-branding-content">
+                <h1 style="font-size: 2.5rem; margin-bottom: var(--space-4);">Streamline Your Service</h1>
+                <p style="color: var(--primary-300); font-size: 1.125rem;">Manage orders, customers, and your team all in one place.</p>
+            </div>
+        </div>
+
+        <!-- Right Side: Login Form -->
+        <div class="auth-form-wrapper">
+            <div class="auth-card">
+                <div class="logo">
+                     Service<span>Dash</span>
+                </div>
+                
+                <h2 class="font-bold text-primary" style="font-size: 1.875rem; margin-bottom: var(--space-2);">Welcome back</h2>
+                <p class="text-secondary mb-6">Please enter your details to sign in.</p>
+
+                <form action="dashboard.html">
+                    <div class="input-group">
+                        <label for="email" class="input-label">Email Address</label>
+                        <input type="email" id="email" class="input-field" placeholder="name@company.com" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="password" class="input-label">Password</label>
+                        <input type="password" id="password" class="input-field" placeholder="••••••••" required>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-6);">
+                        <label style="display: flex; align-items: center; gap: var(--space-2); font-size: 0.875rem; color: var(--primary-700);">
+                            <input type="checkbox" style="accent-color: var(--accent-500);"> Remember me
+                        </label>
+                        <a href="#" class="text-sm font-medium text-accent hover:underline">Forgot password?</a>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-full">Sign in</button>
+                </form>
+
+                <p class="text-secondary text-sm" style="text-align: center; margin-top: var(--space-8);">
+                    Don't have an account? <a href="#" class="font-medium text-primary hover:underline">Sign up</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

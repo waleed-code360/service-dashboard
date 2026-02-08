@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operations - Service Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .kanban-board {
+            display: flex;
+            gap: var(--space-6);
+            overflow-x: auto;
+            padding-bottom: var(--space-6);
+            height: calc(100vh - 180px);
+            /* Adjust based on header height */
+        }
+
+        .kanban-column {
+            flex: 0 0 320px;
+            background-color: var(--primary-100);
+            border-radius: var(--radius-lg);
+            display: flex;
+            flex-direction: column;
+            max-height: 100%;
+        }
+
+        .kanban-header {
+            padding: var(--space-4);
+            font-weight: 600;
+            color: var(--primary-700);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .kanban-count {
+            background-color: var(--white);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            color: var(--primary-500);
+        }
+
+        .kanban-tasks {
+            padding: var(--space-3);
+            overflow-y: auto;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+        }
+
+        .kanban-card {
+            background-color: var(--white);
+            border-radius: var(--radius-md);
+            padding: var(--space-4);
+            box-shadow: var(--shadow-sm);
+            cursor: move;
+            /* Indicate draggable */
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .kanban-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+            border-color: var(--accent-500);
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .tag-design {
+            background-color: #E0E7FF;
+            color: #4338CA;
+        }
+
+        .tag-seo {
+            background-color: #ECFDF5;
+            color: #059669;
+        }
+
+        .tag-urgent {
+            background-color: #FEE2E2;
+            color: #B91C1C;
+        }
+
+        .avatar-stack {
+            display: flex;
+            margin-left: 8px;
+        }
+
+        .avatar-small {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid white;
+            background-color: var(--primary-300);
+            margin-left: -8px;
+        }
+
+        .avatar-small:first-child {
+            margin-left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">Service<span>Dash</span></div>
+            </div>
+
+            <nav class="nav-list">
+                <a href="dashboard.html" class="nav-item">
+                    <i class="ph ph-squares-four nav-icon"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="customers.html" class="nav-item">
+                    <i class="ph ph-users nav-icon"></i>
+                    <span>Customers</span>
+                </a>
+                <a href="#" class="nav-item active">
+                    <i class="ph ph-clipboard-text nav-icon"></i>
+                    <span>Orders</span>
+                    <span
+                        style="margin-left: auto; background: var(--accent-500); padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; color: white;">3</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="ph ph-chat-circle-dots nav-icon"></i>
+                    <span>Team Chat</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="ph ph-gear nav-icon"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="nav-item" style="color: var(--danger-500);">
+                    <i class="ph ph-sign-out nav-icon"></i>
+                    <span>Log Out</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Topbar -->
+            <header class="topbar">
+                <div class="search-bar">
+                    <i class="ph ph-magnifying-glass" style="color: var(--primary-500);"></i>
+                    <input type="text" class="search-input" placeholder="Search orders...">
+                </div>
+
+                <div style="display: flex; align-items: center; gap: var(--space-4);">
+                    <button class="btn btn-primary" style="padding: 6px 12px; font-size: 0.8rem;">
+                        <i class="ph ph-plus" style="margin-right: 4px;"></i> New Order
+                    </button>
+                    <div style="width: 1px; height: 24px; background: var(--primary-300);"></div>
+                    <i class="ph ph-bell" style="font-size: 1.5rem; color: var(--primary-500); cursor: pointer;"></i>
+                </div>
+            </header>
+
+            <div class="container" style="padding-top: var(--space-6); max-width: 100%;">
+                <div
+                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-6);">
+                    <h1 class="font-bold text-primary" style="font-size: 1.5rem;">Operations Board</h1>
+                    <div style="display: flex; gap: var(--space-2);">
+                        <button class="btn btn-secondary active" style="background-color: var(--primary-100);">
+                            <i class="ph ph-kanban" style="margin-right: var(--space-2);"></i> Board
+                        </button>
+                        <button class="btn btn-secondary">
+                            <i class="ph ph-list-dashes" style="margin-right: var(--space-2);"></i> List
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Kanban Board -->
+                <div class="kanban-board">
+                    <!-- Column 1: New Requests -->
+                    <div class="kanban-column">
+                        <div class="kanban-header">
+                            <span>New Requests</span>
+                            <span class="kanban-count">3</span>
+                        </div>
+                        <div class="kanban-tasks">
+                            <div class="kanban-card">
+                                <div
+                                    style="display: flex; justify-content: space-between; margin-bottom: var(--space-2);">
+                                    <span class="tag tag-design">Web Design</span>
+                                    <i class="ph ph-dots-three" style="color: var(--primary-300); cursor: pointer;"></i>
+                                </div>
+                                <h4 class="font-medium text-primary" style="margin-bottom: var(--space-1);">Landing Page
+                                    Redesign</h4>
+                                <p class="text-xs text-secondary" style="margin-bottom: var(--space-3);">TechCorp Inc.
+                                </p>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div class="text-xs text-secondary"><i class="ph ph-calendar-blank"></i> Due Oct 28
+                                    </div>
+                                    <div class="avatar-stack">
+                                        <!-- Unassigned -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="kanban-card">
+                                <div
+                                    style="display: flex; justify-content: space-between; margin-bottom: var(--space-2);">
+                                    <span class="tag tag-seo">SEO Audit</span>
+                                    <i class="ph ph-dots-three" style="color: var(--primary-300); cursor: pointer;"></i>
+                                </div>
+                                <h4 class="font-medium text-primary" style="margin-bottom: var(--space-1);">Q4 Keyword
+                                    Analysis</h4>
+                                <p class="text-xs text-secondary" style="margin-bottom: var(--space-3);">Growth
+                                    Marketing Ltd.</p>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div class="text-xs text-secondary"><i class="ph ph-calendar-blank"></i> Due Oct 30
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="kanban-card" style="border-left: 3px solid #EF4444;">
+                                <div
+                                    style="display: flex; justify-content: space-between; margin-bottom: var(--space-2);">
+                                    <span class="tag tag-urgent">Urgent</span>
+                                    <i class="ph ph-dots-three" style="color: var(--primary-300); cursor: pointer;"></i>
+                                </div>
+                                <h4 class="font-medium text-primary" style="margin-bottom: var(--space-1);">Server Crash
+                                    Fix</h4>
+                                <p class="text-xs text-secondary" style="margin-bottom: var(--space-3);">RetailGiant</p>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div class="text-xs text-danger"><i class="ph ph-warning"></i> Due ASAP</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: In Progress -->
+                    <div class="kanban-column">
+                        <div class="kanban-header">
+                            <span>In Progress</span>
+                            <span class="kanban-count">2</span>
+                        </div>
+                        <div class="kanban-tasks">
+                            <div class="kanban-card">
+                                <div
+                                    style="display: flex; justify-content: space-between; margin-bottom: var(--space-2);">
+                                    <span class="tag tag-design">Branding</span>
+                                    <i class="ph ph-dots-three" style="color: var(--primary-300); cursor: pointer;"></i>
+                                </div>
+                                <h4 class="font-medium text-primary" style="margin-bottom: var(--space-1);">Logo
+                                    Concepts</h4>
+                                <p class="text-xs text-secondary" style="margin-bottom: var(--space-3);">StartupOne</p>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div class="text-xs text-secondary"><i class="ph ph-calendar-blank"></i> Due Nov 1
+                                    </div>
+                                    <div class="avatar-stack">
+                                        <div class="avatar-small" style="background-color: var(--accent-500);"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="kanban-card">
+                                <div
+                                    style="display: flex; justify-content: space-between; margin-bottom: var(--space-2);">
+                                    <span class="tag tag-seo">Content</span>
+                                    <i class="ph ph-dots-three" style="color: var(--primary-300); cursor: pointer;"></i>
+                                </div>
+                                <h4 class="font-medium text-primary" style="margin-bottom: var(--space-1);">Blog Post
+                                    Series</h4>
+                                <p class="text-xs text-secondary" style="margin-bottom: var(--space-3);">HealthPlus</p>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div class="text-xs text-secondary"><i class="ph ph-calendar-blank"></i> Due Oct 27
+                                    </div>
+                                    <div class="avatar-stack">
+                                        <div class="avatar-small" style="background-color: #3B82F6;"></div>
+                                        <div class="avatar-small" style="background-color: #F59E0B;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 3: Review -->
+                    <div class="kanban-column">
+                        <div class="kanban-header">
+                            <span>Review</span>
+                            <span class="kanban-count">1</span>
+                        </div>
+                        <div class="kanban-tasks">
+                            <div class="kanban-card">
+                                <div
+                                    style="display: flex; justify-content: space-between; margin-bottom: var(--space-2);">
+                                    <span class="tag tag-design">UI/UX</span>
+                                    <i class="ph ph-dots-three" style="color: var(--primary-300); cursor: pointer;"></i>
+                                </div>
+                                <h4 class="font-medium text-primary" style="margin-bottom: var(--space-1);">App Layouts
+                                </h4>
+                                <p class="text-xs text-secondary" style="margin-bottom: var(--space-3);">Fitness App</p>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div class="text-xs text-secondary"><i class="ph ph-calendar-blank"></i> Due Today
+                                    </div>
+                                    <div class="avatar-stack">
+                                        <div class="avatar-small" style="background-color: var(--primary-700);"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 4: Completed -->
+                    <div class="kanban-column">
+                        <div class="kanban-header">
+                            <span>Completed</span>
+                            <span class="kanban-count">5</span>
+                        </div>
+                        <div class="kanban-tasks">
+                            <!-- Example completed task -->
+                            <div class="kanban-card" style="opacity: 0.7;">
+                                <div
+                                    style="display: flex; justify-content: space-between; margin-bottom: var(--space-2);">
+                                    <span class="tag tag-seo">SEO</span>
+                                    <i class="ph ph-check-circle" style="color: var(--accent-500);"></i>
+                                </div>
+                                <h4 class="font-medium text-primary" style="margin-bottom: var(--space-1);">Site Audit
+                                </h4>
+                                <p class="text-xs text-secondary" style="margin-bottom: var(--space-3);">Local Cafe</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

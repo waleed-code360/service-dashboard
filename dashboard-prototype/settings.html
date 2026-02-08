@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Service Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .settings-layout {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: var(--space-8);
+            align-items: start;
+        }
+
+        .settings-nav {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-1);
+        }
+
+        .settings-nav-item {
+            padding: var(--space-2) var(--space-4);
+            border-radius: var(--radius-md);
+            color: var(--primary-700);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .settings-nav-item:hover,
+        .settings-nav-item.active {
+            background-color: var(--primary-100);
+            color: var(--primary-900);
+        }
+
+        .settings-nav-item.active {
+            background-color: var(--white);
+            box-shadow: var(--shadow-sm);
+            color: var(--accent-600);
+        }
+
+        .form-section {
+            margin-bottom: var(--space-8);
+            border-bottom: 1px solid var(--primary-100);
+            padding-bottom: var(--space-8);
+        }
+
+        .form-section:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .avatar-upload {
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+            margin-bottom: var(--space-6);
+        }
+
+        .avatar-large {
+            width: 80px;
+            height: 80px;
+            background-color: var(--primary-300);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--white);
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 24px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--primary-300);
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: var(--accent-500);
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(20px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">Service<span>Dash</span></div>
+            </div>
+
+            <nav class="nav-list">
+                <a href="dashboard.html" class="nav-item">
+                    <i class="ph ph-squares-four nav-icon"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="customers.html" class="nav-item">
+                    <i class="ph ph-users nav-icon"></i>
+                    <span>Customers</span>
+                </a>
+                <a href="operations.html" class="nav-item">
+                    <i class="ph ph-clipboard-text nav-icon"></i>
+                    <span>Orders</span>
+                    <span
+                        style="margin-left: auto; background: var(--accent-500); padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; color: white;">3</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="ph ph-chat-circle-dots nav-icon"></i>
+                    <span>Team Chat</span>
+                </a>
+                <a href="#" class="nav-item active">
+                    <i class="ph ph-gear nav-icon"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="nav-item" style="color: var(--danger-500);">
+                    <i class="ph ph-sign-out nav-icon"></i>
+                    <span>Log Out</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Topbar -->
+            <header class="topbar">
+                <div class="search-bar">
+                    <i class="ph ph-magnifying-glass" style="color: var(--primary-500);"></i>
+                    <input type="text" class="search-input" placeholder="Search settings...">
+                </div>
+
+                <div style="display: flex; align-items: center; gap: var(--space-4);">
+                    <i class="ph ph-bell" style="font-size: 1.5rem; color: var(--primary-500); cursor: pointer;"></i>
+                    <div style="display: flex; align-items: center; gap: var(--space-2);">
+                        <div
+                            style="width: 32px; height: 32px; background-color: var(--primary-300); border-radius: 50%;">
+                        </div>
+                        <span class="font-medium text-sm">Admin User</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="container" style="padding-top: var(--space-6);">
+                <h1 class="font-bold text-primary mb-6" style="font-size: 1.5rem;">Settings</h1>
+
+                <div class="settings-layout">
+                    <!-- Settings Nav -->
+                    <aside class="settings-nav">
+                        <div class="settings-nav-item active">General Profile</div>
+                        <div class="settings-nav-item">Notifications</div>
+                        <div class="settings-nav-item">Staff Management</div>
+                        <div class="settings-nav-item">Billing & Plan</div>
+                        <div class="settings-nav-item">Integrations</div>
+                    </aside>
+
+                    <!-- Content -->
+                    <div class="card">
+                        <!-- Profile Section -->
+                        <div class="form-section">
+                            <h2 class="font-semibold text-primary mb-4" style="font-size: 1.25rem;">General Profile</h2>
+                            <p class="text-secondary mb-6">Update your photo and personal details here.</p>
+
+                            <div class="avatar-upload">
+                                <div class="avatar-large">AU</div>
+                                <div>
+                                    <button class="btn btn-secondary">Change Photo</button>
+                                    <button class="btn btn-secondary"
+                                        style="color: var(--danger-500); border-color: transparent;">Remove</button>
+                                </div>
+                            </div>
+
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);">
+                                <div class="input-group">
+                                    <label class="input-label">First Name</label>
+                                    <input type="text" class="input-field" value="Admin">
+                                </div>
+                                <div class="input-group">
+                                    <label class="input-label">Last Name</label>
+                                    <input type="text" class="input-field" value="User">
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label class="input-label">Email Address</label>
+                                <input type="email" class="input-field" value="admin@servicedash.com">
+                            </div>
+                        </div>
+
+                        <!-- System Config Section (Example) -->
+                        <div class="form-section">
+                            <h2 class="font-semibold text-primary mb-4" style="font-size: 1.25rem;">Preferences</h2>
+
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+                                <div>
+                                    <p class="font-medium text-primary">Email Notifications</p>
+                                    <p class="text-secondary text-sm">Receive emails about new orders.</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <p class="font-medium text-primary">Dark Mode</p>
+                                    <p class="text-secondary text-sm">Switch between light and dark themes.</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div style="text-align: right;">
+                            <button class="btn btn-primary">Save Changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
