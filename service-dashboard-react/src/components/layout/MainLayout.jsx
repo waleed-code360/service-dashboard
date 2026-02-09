@@ -40,29 +40,33 @@ const MainLayout = () => {
                 </div>
 
                 <nav className="nav-list" style={{ padding: 'var(--space-4) var(--space-2)' }}>
-                    <Link to="/" className={`nav-item ${isActive('/') ? 'active' : ''}`} style={isActive('/') ? { backgroundColor: 'var(--primary-800)', color: 'white', borderLeft: '3px solid var(--accent-500)', paddingLeft: 'calc(var(--space-4) - 3px)' } : {}}>
-                        <i className={`ph ${isActive('/') ? 'ph-squares-four-fill' : 'ph-squares-four'} nav-icon`} style={{ color: isActive('/') ? 'var(--accent-500)' : 'inherit' }}></i>
-                        {!sidebarCollapsed && <span>Dashboard</span>}
+                    <Link to="/" className={`nav-item ${isActive('/') ? 'active' : ''}`} style={isActive('/') ? { backgroundColor: 'var(--primary-800)', color: 'white', borderLeft: '4px solid var(--accent-500)', paddingLeft: 'calc(var(--space-4) - 4px)', boxShadow: '0 1px 3px rgba(0,0,0,0.2)' } : { borderLeft: '4px solid transparent' }}>
+                        <i className={`ph ${isActive('/') ? 'ph-squares-four-fill' : 'ph-squares-four'} nav-icon`} style={{ color: isActive('/') ? 'var(--accent-500)' : 'inherit', fontSize: '1.3rem' }}></i>
+                        {!sidebarCollapsed && <span style={{ fontWeight: isActive('/') ? 600 : 400 }}>Dashboard</span>}
                     </Link>
-                    <Link to="/customers" className={`nav-item ${isActive('/customers') ? 'active' : ''}`} style={isActive('/customers') ? { backgroundColor: 'var(--primary-800)', color: 'white', borderLeft: '3px solid var(--accent-500)', paddingLeft: 'calc(var(--space-4) - 3px)' } : {}}>
-                        <i className={`ph ${isActive('/customers') ? 'ph-users-fill' : 'ph-users'} nav-icon`} style={{ color: isActive('/customers') ? 'var(--accent-500)' : 'inherit' }}></i>
-                        {!sidebarCollapsed && <span>Customers</span>}
+
+                    <Link to="/customers" className={`nav-item ${isActive('/customers') ? 'active' : ''}`} style={isActive('/customers') ? { backgroundColor: 'var(--primary-800)', color: 'white', borderLeft: '4px solid var(--accent-500)', paddingLeft: 'calc(var(--space-4) - 4px)', boxShadow: '0 1px 3px rgba(0,0,0,0.2)' } : { borderLeft: '4px solid transparent' }}>
+                        <i className={`ph ${isActive('/customers') ? 'ph-users-fill' : 'ph-users'} nav-icon`} style={{ color: isActive('/customers') ? 'var(--accent-500)' : 'inherit', fontSize: '1.3rem' }}></i>
+                        {!sidebarCollapsed && <span style={{ fontWeight: isActive('/customers') ? 600 : 400 }}>Customers</span>}
                     </Link>
-                    <Link to="/operations" className={`nav-item ${isActive('/operations') ? 'active' : ''}`} style={isActive('/operations') ? { backgroundColor: 'var(--primary-800)', color: 'white', borderLeft: '3px solid var(--accent-500)', paddingLeft: 'calc(var(--space-4) - 3px)' } : {}}>
-                        <i className={`ph ${isActive('/operations') ? 'ph-clipboard-text-fill' : 'ph-clipboard-text'} nav-icon`} style={{ color: isActive('/operations') ? 'var(--accent-500)' : 'inherit' }}></i>
+
+                    <Link to="/operations" className={`nav-item ${isActive('/operations') ? 'active' : ''}`} style={isActive('/operations') ? { backgroundColor: 'var(--primary-800)', color: 'white', borderLeft: '4px solid var(--accent-500)', paddingLeft: 'calc(var(--space-4) - 4px)', boxShadow: '0 1px 3px rgba(0,0,0,0.2)' } : { borderLeft: '4px solid transparent' }}>
+                        <i className={`ph ${isActive('/operations') ? 'ph-clipboard-text-fill' : 'ph-clipboard-text'} nav-icon`} style={{ color: isActive('/operations') ? 'var(--accent-500)' : 'inherit', fontSize: '1.3rem' }}></i>
                         {!sidebarCollapsed && (
                             <>
-                                <span>Orders</span>
+                                <span style={{ fontWeight: isActive('/operations') ? 600 : 400 }}>Orders / Requests</span>
                             </>
                         )}
                     </Link>
-                    <Link to="/chat" className={`nav-item ${isActive('/chat') ? 'active' : ''}`} style={isActive('/chat') ? { backgroundColor: 'var(--primary-800)', color: 'white', borderLeft: '3px solid var(--accent-500)', paddingLeft: 'calc(var(--space-4) - 3px)' } : {}}>
-                        <i className={`ph ${isActive('/chat') ? 'ph-chat-circle-dots-fill' : 'ph-chat-circle-dots'} nav-icon`} style={{ color: isActive('/chat') ? 'var(--accent-500)' : 'inherit' }}></i>
-                        {!sidebarCollapsed && <span>Team Chat</span>}
+
+                    <Link to="/chat" className={`nav-item ${isActive('/chat') ? 'active' : ''}`} style={isActive('/chat') ? { backgroundColor: 'var(--primary-800)', color: 'white', borderLeft: '4px solid var(--accent-500)', paddingLeft: 'calc(var(--space-4) - 4px)', boxShadow: '0 1px 3px rgba(0,0,0,0.2)' } : { borderLeft: '4px solid transparent' }}>
+                        <i className={`ph ${isActive('/chat') ? 'ph-chat-circle-dots-fill' : 'ph-chat-circle-dots'} nav-icon`} style={{ color: isActive('/chat') ? 'var(--accent-500)' : 'inherit', fontSize: '1.3rem' }}></i>
+                        {!sidebarCollapsed && <span style={{ fontWeight: isActive('/chat') ? 600 : 400 }}>Messages</span>}
                     </Link>
-                    <Link to="/settings" className={`nav-item ${isActive('/settings') ? 'active' : ''}`} style={isActive('/settings') ? { backgroundColor: 'var(--primary-800)', color: 'white', borderLeft: '3px solid var(--accent-500)', paddingLeft: 'calc(var(--space-4) - 3px)' } : {}}>
-                        <i className={`ph ${isActive('/settings') ? 'ph-gear-fill' : 'ph-gear'} nav-icon`} style={{ color: isActive('/settings') ? 'var(--accent-500)' : 'inherit' }}></i>
-                        {!sidebarCollapsed && <span>Settings</span>}
+
+                    <Link to="/settings" className={`nav-item ${isActive('/settings') ? 'active' : ''}`} style={isActive('/settings') ? { backgroundColor: 'var(--primary-800)', color: 'white', borderLeft: '4px solid var(--accent-500)', paddingLeft: 'calc(var(--space-4) - 4px)', boxShadow: '0 1px 3px rgba(0,0,0,0.2)' } : { borderLeft: '4px solid transparent' }}>
+                        <i className={`ph ${isActive('/settings') ? 'ph-gear-fill' : 'ph-gear'} nav-icon`} style={{ color: isActive('/settings') ? 'var(--accent-500)' : 'inherit', fontSize: '1.3rem' }}></i>
+                        {!sidebarCollapsed && <span style={{ fontWeight: isActive('/settings') ? 600 : 400 }}>Settings</span>}
                     </Link>
                 </nav>
 

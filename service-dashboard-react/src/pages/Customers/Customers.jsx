@@ -46,17 +46,17 @@ const Customers = () => {
             </div>
 
             {/* Filters */}
-            <div className="card" style={{ padding: 'var(--space-4)', marginBottom: 'var(--space-6)', display: 'flex', gap: 'var(--space-4)', alignItems: 'center' }}>
+            <div className="card" style={{ padding: 'var(--space-4)', marginBottom: 'var(--space-6)', display: 'flex', gap: 'var(--space-4)', alignItems: 'center', backgroundColor: '#F8FAFC', border: '1px solid #E2E8F0' }}>
                 <div style={{ flex: 1, position: 'relative' }}>
-                    <i className="ph ph-magnifying-glass" style={{ position: 'absolute', left: '12px', top: '12px', color: 'var(--primary-500)' }}></i>
-                    <input type="text" className="input-field" placeholder="Search by name, email, or phone" style={{ paddingLeft: '36px' }} />
+                    <i className="ph ph-magnifying-glass" style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: 'var(--primary-500)', fontSize: '1.2rem' }}></i>
+                    <input type="text" className="input-field" placeholder="Search customers by name, email, or phone..." style={{ paddingLeft: '48px', height: '48px', fontSize: '1rem', border: '1px solid #CBD5E1', borderRadius: '8px', width: '100%' }} />
                 </div>
-                <select className="input-field" style={{ width: '150px' }}>
+                <select className="input-field" style={{ width: '180px', height: '48px', fontSize: '0.95rem' }}>
                     <option>Status: All</option>
                     <option>Active</option>
                     <option>Inactive</option>
                 </select>
-                <button className="btn btn-secondary">
+                <button className="btn btn-secondary" style={{ height: '48px' }}>
                     <i className="ph ph-faders" style={{ marginRight: 'var(--space-2)' }}></i> Filters
                 </button>
             </div>

@@ -209,38 +209,43 @@ const Operations = () => {
                                         padding: 'var(--space-4)',
                                         boxShadow: 'var(--shadow-sm)',
                                         cursor: 'move',
-                                        borderLeft: task.priority === 'urgent' ? '3px solid #EF4444' : '1px solid transparent',
-                                        opacity: task.status === 'completed' ? 0.7 : 1
+                                        borderLeft: task.status === 'new_requests' ? '4px solid #F59E0B' :
+                                            task.status === 'in_progress' ? '4px solid #3B82F6' :
+                                                task.status === 'completed' ? '4px solid #10B981' : '4px solid #CBD5E1',
+                                        opacity: task.status === 'completed' ? 0.8 : 1,
+                                        transition: 'transform 0.2s, box-shadow 0.2s'
                                     }}
                                 >
                                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 'var(--space-2)' }}>
-                                        {task.tags && task.tags.map((tag, idx) => (
-                                            <span key={idx} className="tag tag-design" style={{
-                                                display: 'inline-block',
-                                                padding: '2px 6px',
-                                                borderRadius: '4px',
-                                                fontSize: '0.7rem',
-                                                fontWeight: 600,
-                                                textTransform: 'uppercase',
-                                                backgroundColor: '#E0E7FF',
-                                                color: '#4338CA',
-                                                marginRight: '4px'
-                                            }}>
-                                                {tag}
-                                            </span>
-                                        ))}
-                                        {!task.tags || task.tags.length === 0 ? <span></span> : null}
-
+                                        <span className="status-badge" style={{
+                                            backgroundColor: task.status === 'new_requests' ? '#FFFBEB' :
+                                                task.status === 'in_progress' ? '#EFF6FF' :
+                                                    task.status === 'completed' ? '#ECFDF5' : '#F1F5F9',
+                                            color: task.status === 'new_requests' ? '#D97706' :
+                                                task.status === 'in_progress' ? '#2563EB' :
+                                                    task.status === 'completed' ? '#059669' : '#64748B',
+                                            padding: '2px 8px', borderRadius: '12px', fontSize: '0.7rem', fontWeight: 600, textTransform: 'capitalize'
+                                        }}>
+                                            {task.status.replace('_', ' ')}
+                                        </span>
                                         <i className="ph ph-dots-three" style={{ color: 'var(--primary-300)', cursor: 'pointer' }}></i>
                                     </div>
-                                    <h4 className="font-medium text-primary" style={{ marginBottom: 'var(--space-1)' }}>{task.title}</h4>
-                                    <p className="text-xs text-secondary" style={{ marginBottom: 'var(--space-3)' }}>Client ID: {task.client_id ? task.client_id.substring(0, 8) : 'N/A'}</p>
-                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                        {task.due_date && (
-                                            <div className={`text-xs ${task.priority === 'urgent' ? 'text-danger' : 'text-secondary'}`} style={{ color: task.priority === 'urgent' ? 'var(--danger-500)' : 'inherit' }}>
-                                                {task.priority === 'urgent' ? <i className="ph ph-warning"></i> : <i className="ph ph-calendar-blank"></i>} {new Date(task.due_date).toLocaleDateString()}
-                                            </div>
-                                        )}
+
+                                    <h4 className="font-bold text-primary" style={{ marginBottom: 'var(--space-1)', fontSize: '1rem' }}>{task.title}</h4>
+
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', marginBottom: 'var(--space-2)' }}>
+                                        <i className="ph ph-user" style={{ color: 'var(--primary-400)', fontSize: '0.875rem' }}></i>
+                                        <span className="text-sm text-secondary">TechCorp Inc.</span> {/* Mock Client Name for visual request */}
+                                    </div>
+
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid var(--primary-100)', paddingTop: 'var(--space-3)', marginTop: 'var(--space-2)' }}>
+                                        <div className={`text-xs ${task.priority === 'urgent' ? 'text-danger' : 'text-secondary'}`} style={{ display: 'flex', alignItems: 'center', gap: '4px', color: task.priority === 'urgent' ? 'var(--danger-500)' : 'inherit', fontWeight: 500 }}>
+                                            {task.priority === 'urgent' ? <i className="ph ph-warning-circle"></i> : <i className="ph ph-calendar-blank"></i>}
+                                            {task.due_date ? new Date(task.due_date).toLocaleDateString() : 'Today'}
+                                        </div>
+                                        <div style={{ width: '24px', height: '24px', borderRadius: '50%', backgroundColor: '#E2E8F0', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.7rem', fontWeight: 600, color: '#64748B' }}>
+                                            JD
+                                        </div>
                                     </div>
                                 </div>
                             ))}

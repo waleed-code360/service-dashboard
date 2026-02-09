@@ -130,7 +130,7 @@ const Dashboard = () => {
                 <div className="card stat-card">
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 'var(--space-2)' }}>
                         <div>
-                            <p className="text-secondary text-sm font-medium">Active Orders</p>
+                            <p className="text-secondary text-sm font-medium">Active Orders Today</p>
                             <h3 className="font-bold text-primary" style={{ fontSize: '1.5rem', marginTop: 'var(--space-1)' }}>{safeStats.active_orders}</h3>
                         </div>
                         <div style={{ backgroundColor: '#EFF6FF', padding: '10px', borderRadius: '12px', color: '#2563EB' }}>
@@ -143,7 +143,7 @@ const Dashboard = () => {
                 <div className="card stat-card">
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 'var(--space-2)' }}>
                         <div>
-                            <p className="text-secondary text-sm font-medium">New Customers</p>
+                            <p className="text-secondary text-sm font-medium">Total Customers</p>
                             <h3 className="font-bold text-primary" style={{ fontSize: '1.5rem', marginTop: 'var(--space-1)' }}>{safeStats.new_customers}</h3>
                         </div>
                         <div style={{ backgroundColor: '#EEF2FF', padding: '10px', borderRadius: '12px', color: '#4F46E5' }}>
@@ -156,14 +156,14 @@ const Dashboard = () => {
                 <div className="card stat-card">
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 'var(--space-2)' }}>
                         <div>
-                            <p className="text-secondary text-sm font-medium">Pending Reviews</p>
+                            <p className="text-secondary text-sm font-medium">Attention Required</p>
                             <h3 className="font-bold text-primary" style={{ fontSize: '1.5rem', marginTop: 'var(--space-1)' }}>{safeStats.pending_reviews}</h3>
                         </div>
                         <div style={{ backgroundColor: '#FFFBEB', padding: '10px', borderRadius: '12px', color: '#D97706' }}>
-                            <i className="ph ph-star" style={{ fontSize: '1.5rem' }}></i>
+                            <i className="ph ph-warning-circle" style={{ fontSize: '1.5rem' }}></i>
                         </div>
                     </div>
-                    <p className="text-xs text-secondary">Requires attention</p>
+                    <p className="text-xs text-secondary">Pending reviews/issues</p>
                 </div>
             </div>
 
