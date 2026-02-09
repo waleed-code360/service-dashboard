@@ -39,30 +39,29 @@ const MainLayout = () => {
                     </div>
                 </div>
 
-                <nav className="nav-list">
-                    <Link to="/" className={`nav-item ${isActive('/') ? 'active' : ''}`}>
-                        <i className="ph ph-squares-four nav-icon"></i>
+                <nav className="nav-list" style={{ padding: 'var(--space-4) var(--space-2)' }}>
+                    <Link to="/" className={`nav-item ${isActive('/') ? 'active' : ''}`} style={isActive('/') ? { backgroundColor: 'var(--primary-800)', color: 'white', borderLeft: '3px solid var(--accent-500)', paddingLeft: 'calc(var(--space-4) - 3px)' } : {}}>
+                        <i className={`ph ${isActive('/') ? 'ph-squares-four-fill' : 'ph-squares-four'} nav-icon`} style={{ color: isActive('/') ? 'var(--accent-500)' : 'inherit' }}></i>
                         {!sidebarCollapsed && <span>Dashboard</span>}
                     </Link>
-                    <Link to="/customers" className={`nav-item ${isActive('/customers') ? 'active' : ''}`}>
-                        <i className="ph ph-users nav-icon"></i>
+                    <Link to="/customers" className={`nav-item ${isActive('/customers') ? 'active' : ''}`} style={isActive('/customers') ? { backgroundColor: 'var(--primary-800)', color: 'white', borderLeft: '3px solid var(--accent-500)', paddingLeft: 'calc(var(--space-4) - 3px)' } : {}}>
+                        <i className={`ph ${isActive('/customers') ? 'ph-users-fill' : 'ph-users'} nav-icon`} style={{ color: isActive('/customers') ? 'var(--accent-500)' : 'inherit' }}></i>
                         {!sidebarCollapsed && <span>Customers</span>}
                     </Link>
-                    <Link to="/operations" className={`nav-item ${isActive('/operations') ? 'active' : ''}`}>
-                        <i className="ph ph-clipboard-text nav-icon"></i>
+                    <Link to="/operations" className={`nav-item ${isActive('/operations') ? 'active' : ''}`} style={isActive('/operations') ? { backgroundColor: 'var(--primary-800)', color: 'white', borderLeft: '3px solid var(--accent-500)', paddingLeft: 'calc(var(--space-4) - 3px)' } : {}}>
+                        <i className={`ph ${isActive('/operations') ? 'ph-clipboard-text-fill' : 'ph-clipboard-text'} nav-icon`} style={{ color: isActive('/operations') ? 'var(--accent-500)' : 'inherit' }}></i>
                         {!sidebarCollapsed && (
                             <>
                                 <span>Orders</span>
-                                {/* Badge optional */}
                             </>
                         )}
                     </Link>
-                    <Link to="/chat" className={`nav-item ${isActive('/chat') ? 'active' : ''}`}>
-                        <i className="ph ph-chat-circle-dots nav-icon"></i>
+                    <Link to="/chat" className={`nav-item ${isActive('/chat') ? 'active' : ''}`} style={isActive('/chat') ? { backgroundColor: 'var(--primary-800)', color: 'white', borderLeft: '3px solid var(--accent-500)', paddingLeft: 'calc(var(--space-4) - 3px)' } : {}}>
+                        <i className={`ph ${isActive('/chat') ? 'ph-chat-circle-dots-fill' : 'ph-chat-circle-dots'} nav-icon`} style={{ color: isActive('/chat') ? 'var(--accent-500)' : 'inherit' }}></i>
                         {!sidebarCollapsed && <span>Team Chat</span>}
                     </Link>
-                    <Link to="/settings" className={`nav-item ${isActive('/settings') ? 'active' : ''}`}>
-                        <i className="ph ph-gear nav-icon"></i>
+                    <Link to="/settings" className={`nav-item ${isActive('/settings') ? 'active' : ''}`} style={isActive('/settings') ? { backgroundColor: 'var(--primary-800)', color: 'white', borderLeft: '3px solid var(--accent-500)', paddingLeft: 'calc(var(--space-4) - 3px)' } : {}}>
+                        <i className={`ph ${isActive('/settings') ? 'ph-gear-fill' : 'ph-gear'} nav-icon`} style={{ color: isActive('/settings') ? 'var(--accent-500)' : 'inherit' }}></i>
                         {!sidebarCollapsed && <span>Settings</span>}
                     </Link>
                 </nav>

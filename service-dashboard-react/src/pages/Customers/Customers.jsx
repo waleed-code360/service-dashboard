@@ -39,8 +39,9 @@ const Customers = () => {
         <>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--space-6)' }}>
                 <h1 className="font-bold text-primary" style={{ fontSize: '1.5rem' }}>Customers</h1>
-                <button className="btn btn-primary" onClick={handleAddCustomer}>
-                    <i className="ph ph-plus" style={{ marginRight: 'var(--space-2)' }}></i> Add Customer
+                <button className="btn btn-primary" onClick={handleAddCustomer} style={{ boxShadow: '0 4px 6px -1px rgba(16, 185, 129, 0.4)', padding: '8px 16px' }}>
+                    <i className="ph ph-plus-circle" style={{ marginRight: 'var(--space-2)', fontSize: '1.2rem' }}></i>
+                    <span style={{ fontWeight: 600 }}>New Customer</span>
                 </button>
             </div>
 

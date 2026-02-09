@@ -111,17 +111,20 @@ const Dashboard = () => {
 
             {/* Stats Grid */}
             <div className="stats-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 'var(--space-6)', marginBottom: 'var(--space-6)' }}>
-                <div className="card stat-card">
+                {/* Highlighted Primary Stat */}
+                <div className="card stat-card" style={{ backgroundColor: 'var(--primary-900)', color: 'white', border: 'none' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 'var(--space-2)' }}>
                         <div>
-                            <p className="text-secondary text-sm font-medium">Total Revenue</p>
-                            <h3 className="font-bold text-primary" style={{ fontSize: '1.5rem', marginTop: 'var(--space-1)' }}>{safeStats.total_revenue_amount}</h3>
+                            <p style={{ color: 'var(--primary-300)', fontSize: '0.875rem', fontWeight: 500 }}>Total Revenue</p>
+                            <h3 style={{ fontSize: '1.75rem', fontWeight: 'bold', marginTop: 'var(--space-1)', color: 'white' }}>{safeStats.total_revenue_amount}</h3>
                         </div>
-                        <div style={{ backgroundColor: '#ECFDF5', padding: '8px', borderRadius: '8px', color: '#059669' }}>
-                            <i className="ph ph-currency-dollar" style={{ fontSize: '1.25rem' }}></i>
+                        <div style={{ backgroundColor: 'rgba(255,255,255,0.1)', padding: '10px', borderRadius: '12px', color: '#10B981' }}>
+                            <i className="ph ph-currency-dollar" style={{ fontSize: '1.5rem' }}></i>
                         </div>
                     </div>
-                    <p className="text-xs text-secondary"><span style={{ color: '#059669', fontWeight: 600 }}>+12.5%</span> from last month</p>
+                    <p className="text-xs" style={{ color: 'var(--primary-300)' }}>
+                        <span style={{ color: '#10B981', fontWeight: 600, backgroundColor: 'rgba(16, 185, 129, 0.1)', padding: '2px 6px', borderRadius: '4px' }}>+12.5%</span> from last month
+                    </p>
                 </div>
 
                 <div className="card stat-card">
@@ -130,8 +133,8 @@ const Dashboard = () => {
                             <p className="text-secondary text-sm font-medium">Active Orders</p>
                             <h3 className="font-bold text-primary" style={{ fontSize: '1.5rem', marginTop: 'var(--space-1)' }}>{safeStats.active_orders}</h3>
                         </div>
-                        <div style={{ backgroundColor: '#EFF6FF', padding: '8px', borderRadius: '8px', color: '#2563EB' }}>
-                            <i className="ph ph-shopping-cart" style={{ fontSize: '1.25rem' }}></i>
+                        <div style={{ backgroundColor: '#EFF6FF', padding: '10px', borderRadius: '12px', color: '#2563EB' }}>
+                            <i className="ph ph-shopping-cart" style={{ fontSize: '1.5rem' }}></i>
                         </div>
                     </div>
                     <p className="text-xs text-secondary"><span style={{ color: '#059669', fontWeight: 600 }}>+5</span> new today</p>
@@ -143,8 +146,8 @@ const Dashboard = () => {
                             <p className="text-secondary text-sm font-medium">New Customers</p>
                             <h3 className="font-bold text-primary" style={{ fontSize: '1.5rem', marginTop: 'var(--space-1)' }}>{safeStats.new_customers}</h3>
                         </div>
-                        <div style={{ backgroundColor: '#EEF2FF', padding: '8px', borderRadius: '8px', color: '#4F46E5' }}>
-                            <i className="ph ph-users" style={{ fontSize: '1.25rem' }}></i>
+                        <div style={{ backgroundColor: '#EEF2FF', padding: '10px', borderRadius: '12px', color: '#4F46E5' }}>
+                            <i className="ph ph-users" style={{ fontSize: '1.5rem' }}></i>
                         </div>
                     </div>
                     <p className="text-xs text-secondary"><span style={{ color: '#059669', fontWeight: 600 }}>+2.4%</span> from last month</p>
@@ -156,8 +159,8 @@ const Dashboard = () => {
                             <p className="text-secondary text-sm font-medium">Pending Reviews</p>
                             <h3 className="font-bold text-primary" style={{ fontSize: '1.5rem', marginTop: 'var(--space-1)' }}>{safeStats.pending_reviews}</h3>
                         </div>
-                        <div style={{ backgroundColor: '#FFFBEB', padding: '8px', borderRadius: '8px', color: '#D97706' }}>
-                            <i className="ph ph-star" style={{ fontSize: '1.25rem' }}></i>
+                        <div style={{ backgroundColor: '#FFFBEB', padding: '10px', borderRadius: '12px', color: '#D97706' }}>
+                            <i className="ph ph-star" style={{ fontSize: '1.5rem' }}></i>
                         </div>
                     </div>
                     <p className="text-xs text-secondary">Requires attention</p>
