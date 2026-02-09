@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Skeleton from '../../components/ui/Skeleton';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -43,7 +44,51 @@ const Dashboard = () => {
     }, []);
 
     if (loading) {
-        return <div style={{ padding: 'var(--space-6)', textAlign: 'center' }}>Loading Dashboard...</div>;
+        return (
+            <>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--space-6)' }}>
+                    <Skeleton width="200px" height="32px" />
+                    <Skeleton width="120px" height="40px" />
+                </div>
+                <div className="stats-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 'var(--space-6)', marginBottom: 'var(--space-6)' }}>
+                    {[1, 2, 3, 4].map(i => (
+                        <div key={i} className="card stat-card" style={{ height: '140px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                <div>
+                                    <Skeleton width="100px" height="16px" style={{ marginBottom: '8px' }} />
+                                    <Skeleton width="80px" height="28px" />
+                                </div>
+                                <Skeleton width="48px" height="48px" style={{ borderRadius: '12px' }} />
+                            </div>
+                            <Skeleton width="60%" height="14px" />
+                        </div>
+                    ))}
+                </div>
+                <div className="content-grid" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 'var(--space-6)' }}>
+                    <div className="card" style={{ height: '400px' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '24px' }}>
+                            <Skeleton width="150px" height="24px" />
+                            <Skeleton width="100px" height="32px" />
+                        </div>
+                        <Skeleton height="300px" />
+                    </div>
+                    <div className="card" style={{ height: '400px' }}>
+                        <Skeleton width="120px" height="24px" style={{ marginBottom: '24px' }} />
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                            {[1, 2, 3].map(i => (
+                                <div key={i} style={{ display: 'flex', gap: '12px' }}>
+                                    <Skeleton width="40px" height="40px" style={{ borderRadius: '8px' }} />
+                                    <div style={{ flex: 1 }}>
+                                        <Skeleton width="80%" height="16px" style={{ marginBottom: '4px' }} />
+                                        <Skeleton width="40%" height="12px" />
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </>
+        );
     }
 
     const safeStats = stats || {

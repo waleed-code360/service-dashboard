@@ -408,6 +408,71 @@ ul {
     visibility: visible;
   }
 
+  /* Skeleton Loading Animation */
+  .skeleton {
+    background-color: var(--primary-100);
+    background-image: linear-gradient(90deg,
+        var(--primary-100) 0px,
+        #e2e8f0 40px,
+        var(--primary-100) 80px);
+    background-size: 600px;
+    animation: skeleton-loading 1.6s infinite linear;
+    border-radius: var(--radius-sm);
+  }
+
+  @keyframes skeleton-loading {
+    0% {
+      background-position: -100px;
+    }
+
+    40%,
+    100% {
+      background-position: 140px;
+    }
+  }
+
+  /* Toast Animations */
+  .toast-enter {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  .toast-enter-active {
+    transform: translateX(0);
+    opacity: 1;
+    transition: all 300ms ease-out;
+  }
+
+  .toast-exit {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  .toast-exit-active {
+    transform: translateX(100%);
+    opacity: 0;
+    transition: all 300ms ease-in;
+  }
+
+  /* Scrollbar Polish */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--primary-300);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-500);
+  }
+
   /* Main Content takes full width */
   .main-content {
     margin-left: 0 !important;
