@@ -101,19 +101,68 @@ const Customers = () => {
                     <table className="data-table" style={{ width: '100%', borderCollapse: 'collapse' }}>
                         <thead style={{ backgroundColor: 'var(--primary-50)', position: 'sticky', top: 0, zIndex: 10 }}>
                             <tr>
-                            </table>
+                                <th style={{ textAlign: 'left', padding: 'var(--space-3) var(--space-3) var(--space-3) var(--space-6)', borderBottom: '1px solid var(--primary-100)', color: 'var(--primary-500)', fontWeight: 600, fontSize: '0.875rem' }}>Customer</th>
+                                <th style={{ textAlign: 'left', padding: 'var(--space-3)', borderBottom: '1px solid var(--primary-100)', color: 'var(--primary-500)', fontWeight: 600, fontSize: '0.875rem' }}>Email</th>
+                                <th style={{ textAlign: 'left', padding: 'var(--space-3)', borderBottom: '1px solid var(--primary-100)', color: 'var(--primary-500)', fontWeight: 600, fontSize: '0.875rem' }}>Phone</th>
+                                <th style={{ textAlign: 'left', padding: 'var(--space-3)', borderBottom: '1px solid var(--primary-100)', color: 'var(--primary-500)', fontWeight: 600, fontSize: '0.875rem' }}>Status</th>
+                                <th style={{ textAlign: 'right', padding: 'var(--space-3) var(--space-6) var(--space-3) var(--space-3)', borderBottom: '1px solid var(--primary-100)', color: 'var(--primary-500)', fontWeight: 600, fontSize: '0.875rem' }}>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {customers.map(customer => (
+                                <tr key={customer.id} className="hover-row" style={{ borderBottom: '1px solid var(--primary-100)' }}>
+                                    <td style={{ padding: 'var(--space-3) var(--space-3) var(--space-3) var(--space-6)' }}>
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
+                                            <div style={{ width: '36px', height: '36px', backgroundColor: 'var(--primary-200)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary-700)', fontWeight: 600 }}>
+                                                {customer.name.substring(0, 2).toUpperCase()}
+                                            </div>
+                                            <div>
+                                                <div className="font-medium text-primary">{customer.name}</div>
+                                                <div className="text-xs text-secondary mobile-only">Joined Today</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td className="text-secondary" style={{ padding: 'var(--space-3)' }}>{customer.email}</td>
+                                    <td className="text-secondary" style={{ padding: 'var(--space-3)' }}>{customer.phone || '-'}</td>
+                                    <td style={{ padding: 'var(--space-3)' }}>
+                                        <span className="status-badge" style={{
+                                            backgroundColor: customer.status === 'active' ? '#D1FAE5' : '#FEF3C7',
+                                            color: customer.status === 'active' ? '#059669' : '#D97706',
+                                            padding: '2px 8px', borderRadius: '12px', fontSize: '0.75rem', fontWeight: 600
+                                        }}>
+                                            {customer.status || 'Active'}
+                                        </span>
+                                    </td>
+                                    <td style={{ padding: 'var(--space-3) var(--space-6) var(--space-3) var(--space-3)', textAlign: 'right' }}>
+                                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '8px' }}>
+                                            <button className="btn btn-secondary" style={{ padding: '4px 8px', height: '32px' }} title="View Profile">
+                                                <i className="ph ph-user"></i>
+                                            </button>
+                                            <button className="btn btn-secondary" style={{ padding: '4px 8px', height: '32px' }} title="Edit">
+                                                <i className="ph ph-pencil-simple"></i>
+                                            </button>
+                                            <button className="btn btn-secondary" style={{ padding: '4px 8px', height: '32px', color: 'var(--danger-500)' }} title="Archive">
+                                                <i className="ph ph-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
 
-                            {/* Pagination */}
-                            <div style={{ padding: 'var(--space-4)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid var(--primary-100)' }}>
-                                <span className="text-sm text-secondary">Showing {customers.length} customers</span>
-                                <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
-                                    <button className="btn btn-secondary" disabled>Previous</button>
-                                    <button className="btn btn-secondary" disabled>Next</button>
-                                </div>
-                            </div>
+                    {/* Pagination */}
+                    <div style={{ padding: 'var(--space-4)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid var(--primary-100)' }}>
+                        <span className="text-sm text-secondary">Showing {customers.length} customers</span>
+                        <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
+                            <button className="btn btn-secondary" disabled>Previous</button>
+                            <button className="btn btn-secondary" disabled>Next</button>
                         </div>
-                    </>
-                    );
+                    </div>
+                </div>
+            )}
+        </>
+    );
 };
 
-                    export default Customers;
+export default Customers;

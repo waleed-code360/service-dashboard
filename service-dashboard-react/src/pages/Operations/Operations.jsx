@@ -291,7 +291,6 @@ const Operations = () => {
                         </div>
                     ))}
                 </div>
-                </div >
             )}
         </>
     );
